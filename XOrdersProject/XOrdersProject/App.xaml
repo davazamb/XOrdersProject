@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XOrdersProject.App"
+             xmlns:infra="clr-namespace:XOrdersProject.Infrastructure;assembly=XOrdersProject">
+  <Application.Resources>
+    <ResourceDictionary>
+      <!--General colors-->
+      <Color x:Key="MainColor">#046380</Color>
+      <Color x:Key="FontColor">#002f2f</Color>
+      <Color x:Key="AccentColor1">#e6e2af</Color>
+      <Color x:Key="AccentColor2">#a7a3fe</Color>
+      <Color x:Key="BackgroundColor">#efecca</Color>
+      <!--Menu colors-->
+      <Color x:Key="MenuColor">#046380</Color>
+      <Color x:Key="MenuFontColor">#efecca</Color>
+      <!--Fonts-->
+      <OnPlatform x:Key="GeneralButtonFont"
+                  x:TypeArguments="Font"
+                  iOS="12"
+                  Android="14"
+                  WinPhone="16"/>
+      <!--Menu Colors-->
+      <Style x:Key="GeneralButton"
+             TargetType="Button">
+        <Setter Property="Font"
+                Value="{StaticResource GeneralButtonFont}"></Setter>
+        <Setter Property="BorderRadius"
+                Value="20"></Setter>
+        <Setter Property="HeightRequest"
+          Value="40"></Setter>
+        <Setter Property="BackgroundColor"
+          Value="{StaticResource MainColor}"></Setter>
+        <Setter Property="TextColor"
+          Value="White"></Setter>
+      </Style>
+      <!--DataTemplates-->
+      <DataTemplate x:Key="OrderItemTemplate">
+        <ViewCell>
+          <Grid Padding="8">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="Start"
+                   Source="logo32.png">
+            </Image>
+            <StackLayout Grid.Column="1">
+              <Label VerticalOptions="Center"
+                     FontAttributes="Bold"
+                     TextColor="{StaticResource FontColor}"
+                     Text="{Binding Title}"></Label>
+              <Label VerticalOptions="Center"
+                     TextColor="{StaticResource FontColor}"
+                     Text="{Binding Description}"></Label>
+              <Label VerticalOptions="Center"
+                     TextColor="{StaticResource MainColor}"
+                     Text="{Binding DeliveryDate, StringFormat='{0:yyyy/MM/dd}'}"></Label>
+            </StackLayout>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+      
+      <!--Locator-->
+      <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
